@@ -1,0 +1,20 @@
+spring:
+  freemarker:
+    request-context-attribute: request
+  profiles:
+    active: prod
+
+
+##32位随机字符串
+#roncoo.secret=${random.value}
+##int类型的随机数字
+#roncoo.number=${random.int}
+#
+#roncoo.name=www.roncoo.com
+##属性占位符属性
+#roncoo.desc=${roncoo.name} is a domain name
+#
+##时间格式化
+#spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+##时区设置
+#spring.jackson.time-zone=Asia/Chongqing
