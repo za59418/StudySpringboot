@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>mail</title>
+    </head>
+    <body>
+	    <form th:action="@{/email/simpleMail}" method="get">
+			<input type="submit" value="simple" />
+		</form>
+	    <form th:action="@{/email/htmlMail}" method="get">
+			<input type="submit" value="htmlMail" />
+		</form>
+	    <form th:action="@{/email/attachmentsMail}" method="get">
+			<input type="submit" value="attachmentsMail" />
+		</form>
+    </body>
+</html>
