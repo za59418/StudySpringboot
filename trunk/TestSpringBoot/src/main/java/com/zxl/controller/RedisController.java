@@ -1,5 +1,9 @@
 package com.zxl.controller;
 
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -12,8 +16,8 @@ import redis.clients.jedis.Jedis;
 @RequestMapping("/redis")
 public class RedisController {
 	
-	@RequestMapping("/testjedis")
-    String testjedis() {
+	@RequestMapping("/testJedis")
+    String testJedis() {
 		
 		//连接本地的 Redis 服务
         Jedis jedis = new Jedis("localhost", 6379);
@@ -37,11 +41,22 @@ public class RedisController {
     @Autowired
     private RedisTemplate redisTemplate;
 	    
-	@RequestMapping("/testredis")
-    String testredis() {
+	@RequestMapping("/testRedis")
+    String testRedis() {
 		stringRedisTemplate.opsForValue().set("age", "21");
         String age = stringRedisTemplate.opsForValue().get("age");
         System.out.println("来自redis:" + age);
         return "testredis";
     }
+	
+	@RequestMapping("/testSession")
+	UUID testSession(HttpSession session) {
+		UUID uid = (UUID)session.getAttribute("uid");
+		if(null==uid)
+		{
+			uid = UUID.randomUUID();
+			session.setAttribute("uid", uid);
+		}
+		return uid;
+	}
 }
