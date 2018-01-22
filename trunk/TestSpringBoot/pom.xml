@@ -47,7 +47,14 @@
 		    <artifactId>persistence-api</artifactId>
 		    <version>1.0.2</version>
 		</dependency>
- 
+		
+		<!-- email -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        
  		<!-- 内存数据库hsqldb -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
