@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	@RequestMapping({"/","/index"})
     public String index(){
-        return"/shiro/index";
+        return "shiro/index";
     }
 
     @RequestMapping("/login")
@@ -42,13 +42,13 @@ public class MainController {
         }
         map.put("msg", msg);
         // 此方法不处理登录成功,由shiro进行处理
-        return "/shiro/login";
+        return "shiro/login";
     }
 
     @RequestMapping("/403")
     public String unauthorizedRole(){
         System.out.println("------没有权限-------");
-        return "/shiro/403";
+        return "shiro/403";
     }
     
     public static void main(String[] args) throws Exception {

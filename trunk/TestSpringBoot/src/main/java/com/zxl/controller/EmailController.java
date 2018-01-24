@@ -1,6 +1,5 @@
 package com.zxl.controller;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,43 +24,48 @@ public class EmailController {
 	}
 	
 	@RequestMapping("/simpleMail")
-	public void testSimpleMail() throws Exception {
-        mailService.sendSimpleMail("229298975@qq.com","test simple mail"," hello this is simple mail");
+	public String testSimpleMail() throws Exception {
+        mailService.sendSimpleMail("za59418@163.com","test simple mail"," hello this is simple mail");
+        return "email/sendOk";
     }
 
 	@RequestMapping("/htmlMail")
-    public void testHtmlMail() throws Exception {
+    public String testHtmlMail() throws Exception {
         String content="<html>\n" +
                 "<body>\n" +
                 "    <h3>hello world ! 这是一封html邮件!</h3>\n" +
                 "</body>\n" +
                 "</html>";
-        mailService.sendHtmlMail("229298975@qq.com","test simple mail",content);
+        mailService.sendHtmlMail("za59418@163.com","test simple mail",content);
+        return "email/sendOk";
     }
 
 	@RequestMapping("/attachmentsMail")
-    public void sendAttachmentsMail() {
+    public String sendAttachmentsMail() {
         String filePath="e:\\tmp\\application.log";
-        mailService.sendAttachmentsMail("229298975@qq.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+        mailService.sendAttachmentsMail("za59418@163.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+        return "sendOk";
     }
 	
 	@RequestMapping("/inlineMail")
-	public void sendInlineResourceMail() {
+	public String sendInlineResourceMail() {
         String rscId = "neo006";
         String content="<html><body>这是有图片的邮件：<img src=\'cid:" + rscId + "\' ></body></html>";
-        String imgPath = "C:\\Users\\summer\\Pictures\\favicon.png";
+        String imgPath = "e:\\tmp\\favicon.png";
 
-        mailService.sendInlineResourceMail("229298975@qq.com", "主题：这是有图片的邮件", content, imgPath, rscId);
+        mailService.sendInlineResourceMail("za59418@163.com", "主题：这是有图片的邮件", content, imgPath, rscId);
+        return "email/sendOk";
     }
 
 
 	@RequestMapping("/templateMail")
-    public void sendTemplateMail() {
+    public String sendTemplateMail() {
         //创建邮件正文
         Context context = new Context();
         context.setVariable("id", "006");
-        String emailContent = templateEngine.process("emailTemplate", context);
+        String emailContent = templateEngine.process("email/emailTemplate", context);
 
-        mailService.sendHtmlMail("229298975@qq.com","主题：这是模板邮件",emailContent);
+        mailService.sendHtmlMail("za59418@163.com","主题：这是模板邮件",emailContent);
+        return "email/sendOk";
     }
 }
