@@ -13,10 +13,10 @@ public class SchedulerTask {
 
 	/**
 	 * @Scheduled 注解用于标注这个方法是一个定时任务的方法，
-	 * 有多种配置可选。cron支持cron表达式，指定任务在特定时间执行；
+	 * 有多种配置可选。cron支持cron表达式（在线cron表达式生成器），指定任务在特定时间执行；
 	 * fixedRate以特定频率执行任务；fixedRateString以string的形式配置执行频率。
 	 */
-    @Scheduled(cron="*/6 * * * * ?")
+    @Scheduled(cron="0 0 0/1 * * ?") // 每小时执行一次 
     private void process(){
         System.out.println("this is scheduler task runing  "+(count++));
         
