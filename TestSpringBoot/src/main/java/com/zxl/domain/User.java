@@ -69,4 +69,10 @@ public class User implements Serializable{
 	public void setRegTime(String regTime) {
 		this.regTime = regTime;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "\r\n\tUserName:"+getUserName()+"\r\n\temail:"+getEmail();
+	}
 }
