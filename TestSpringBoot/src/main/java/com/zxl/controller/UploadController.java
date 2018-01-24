@@ -21,7 +21,7 @@ public class UploadController {
 
     @GetMapping("/")
     public String index() {
-        return "/upload/upload";
+        return "upload/upload";
     }
 
     @PostMapping("/doUpload") // //new annotation since 4.3
@@ -50,6 +50,6 @@ public class UploadController {
 
     @GetMapping("/uploadStatus")
     public String uploadStatus() {
-        return "/upload/uploadStatus";
+        return "upload/uploadStatus";
     }
 }

@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,17 +29,14 @@ public class RedisController {
         
         String name = jedis.get("name");
         System.out.println("来自jedis:" + name);
-        
+        jedis.close();
         return "testjedis";
     }
 	
 	
 	@Autowired
-    private StringRedisTemplate stringRedisTemplate;
-	    
-    @Autowired
-    private RedisTemplate redisTemplate;
-	    
+    private StringRedisTemplate stringRedisTemplate;	    
+   
 	@RequestMapping("/testRedis")
     String testRedis() {
 		stringRedisTemplate.opsForValue().set("age", "21");
